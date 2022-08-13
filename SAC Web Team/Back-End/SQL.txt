@@ -1,0 +1,22 @@
+EmpID	ename	EmpAge	job	sal	comm
+ 1	Tom	 25	   analyst	1500	500
+ 2	Raj	 30	   salesman	800	600
+ 3	Mehak	 26	   Analyst	1500	NULL
+ 4	Pari	 30	   clerk	1500	NULL
+ 5	nain	 28	   clerk	1200	NULL
+ 6	Neha	 23	   salesman	600	500
+ 7	Rohan	 25	   clerk	800	500
+ 8	naman	 32	   Manager	2000	NULL
+					
+
+
+1. SELECT * FROM employee
+WHERE ename LIKE 'n%n';
+2. SELECT * FROM employee
+WHERE (ename LIKE '%i%a%' OR ename LIKE '%a%i%') AND  ename NOT LIKE('%e%');
+3. SELECT * FROM employee
+WHERE comm is null and sal is not null;
+4. SELECT * FROM employee e
+WHERE 1200> (SELECT AVG(sal) FROM employee e1 WHERE e.job=e1.job GROUP BY job) ORDER BY job;
+5. SELECT * FROM employee 
+WHERE sal IN(SELECT MAX(sal) FROM employee WHERE sal NOT IN (SELECT MAX(sal) FROM employee));
